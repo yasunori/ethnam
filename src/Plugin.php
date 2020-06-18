@@ -369,7 +369,7 @@ class Ethna_Plugin
                 continue;
             }
             while (($type_dir = readdir($dh)) !== false) {
-                if ($type_dir{0} != '.' && is_dir("{$dir}/{$type_dir}")) {
+                if ($type_dir[0] != '.' && is_dir("{$dir}/{$type_dir}")) {
                     $type_list[$type_dir] = 0;
                 }
             }

@@ -978,7 +978,7 @@ class Ethna_Controller
         // フォームからの指定が無い場合はエントリポイントに指定されたデフォルト値を利用する
         if ($form_action_name == "" && !empty($default_action_name)) {
             $tmp = is_array($default_action_name) ? $default_action_name[0] : $default_action_name;
-            if ($tmp{strlen($tmp)-1} == '*') {
+            if ($tmp[strlen($tmp)-1] == '*') {
                 $tmp = substr($tmp, 0, -1);
             }
             $this->logger->log(LOG_DEBUG, '-> default_action_name[%s]', $tmp);
@@ -992,7 +992,7 @@ class Ethna_Controller
             if ($this->_isAcceptableActionName($action_name, $default_action_name) == false) {
                 // 指定以外のアクション名で合った場合は$fallback_action_name(or デフォルト)
                 $tmp = $fallback_action_name != "" ? $fallback_action_name : $default_action_name[0];
-                if ($tmp{strlen($tmp)-1} == '*') {
+                if ($tmp[strlen($tmp)-1] == '*') {
                     $tmp = substr($tmp, 0, -1);
                 }
                 $this->logger->log(LOG_DEBUG, '-> fallback_action_name[%s]', $tmp);
@@ -1170,7 +1170,7 @@ class Ethna_Controller
         foreach (to_array($default_action_name) as $name) {
             if ($action_name == $name) {
                 return true;
-            } else if ($name{strlen($name)-1} == '*') {
+            } else if ($name[strlen($name)-1] == '*') {
                 if (strncmp($action_name, substr($name, 0, -1), strlen($name)-1) == 0) {
                     return true;
                 }
